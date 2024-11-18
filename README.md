@@ -1,2 +1,2 @@
-# Testing using Selenium WebDriver (using Java)
+# Testing using Selenium WebDriver
 
