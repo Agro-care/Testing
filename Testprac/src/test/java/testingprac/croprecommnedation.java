@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -15,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class firstseleniumTest {
+public class croprecommnedation{
     WebDriver driver;
 
     @BeforeClass
@@ -30,12 +29,12 @@ public class firstseleniumTest {
 
     @AfterClass
     public void tearDown() {
-//        driver.findElement(By.xpath("//li[text()='Logout']")).click();
-//        driver.quit();
+        driver.findElement(By.xpath("//li[text()='Logout']")).click();
+        driver.quit();
     }
 
     @Test
-    public void croprecommendation() {
+    public void clickWeatherAlerts() {
 
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("mvrksk@gmail.com");
         driver.findElement(By.id("loggingPassword")).sendKeys("12345");
@@ -48,7 +47,7 @@ public class firstseleniumTest {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-        driver.findElement(By.xpath("//li[text()='Crop Recommendation']")).click();
+        driver.findElement(By.xpath("//li[text()='Weather Alerts']")).click();
 
         try {
             Thread.sleep(1000);
@@ -56,11 +55,17 @@ public class firstseleniumTest {
             e.printStackTrace();
         }
 
-        Select obj = new Select(driver.findElement(By.id("language-selector")));
-        obj.selectByVisibleText("telugu");
+
+
+        driver.findElement(By.xpath("//label[text()='Wednesday']")).click();
+        driver.findElement(By.xpath("//label[text()='Tuesday']")).click();
+        driver.findElement(By.xpath("//label[text()='Friday']")).click();
+
+
 
 
     }
+
     // Wait for successful login and dashboard load
 
 }

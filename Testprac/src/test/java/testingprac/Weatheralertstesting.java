@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class firstseleniumTest {
+public class Weatheralertstesting {
     WebDriver driver;
 
     @BeforeClass
