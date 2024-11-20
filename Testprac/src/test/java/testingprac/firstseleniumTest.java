@@ -30,40 +30,107 @@ public class firstseleniumTest {
     @AfterClass
     public void tearDown() {
         driver.findElement(By.xpath("//li[text()='Logout']")).click();
-//        driver.quit();
+        driver.quit();
     }
 
     @Test
-    public void croprecommendation() {
+    public void TestfinalforAgroAssist() {
 
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("premsai.potukuchi@gmail.com");
         driver.findElement(By.id("loggingPassword")).sendKeys("12345");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-        driver.findElement(By.xpath("//li[text()='Fertilizer Recommendation']")).click();
+        driver.findElement(By.xpath("//li[text()='Crop Recommendation']")).click();
 
+        Select obj = new Select(driver.findElement(By.id("language-selector")));
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //crop recommendation
+        obj.selectByVisibleText("chinese (simplified)");
 
-        Select obj = new Select(driver.findElement(By.id("language-selector")));
-        obj.selectByVisibleText("telugu");
+        try {
+            Thread.sleep(1800);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.xpath("//input[@placeholder='Enter the Temperature']")).sendKeys("35");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Humidity']")).sendKeys("34");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Nitrogen']")).sendKeys("33");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Phosphorus']")).sendKeys("35");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Potassium']")).sendKeys("33");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the soil pH value (0-14)']")).sendKeys("0");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the rainfall gauge (in mm)']")).sendKeys("102");
+
+        driver.findElement(By.xpath("//button[text()='Get Crop Recommendation']")).click();
+        try {
+            Thread.sleep(1800);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String crop = driver.findElement(By.xpath("//*[normalize-space(text())='芒果']")).getText();
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement new2 = driver.findElement(By.xpath("//*[normalize-space(text())='芒果']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", new2);
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        driver.findElement(By.xpath("//li[text()='Fertilizer Recommendation']")).click();
+
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //Fertilizer recommendation
+
+        Select obj1 = new Select(driver.findElement(By.id("language-selector")));
+        obj1.selectByVisibleText("telugu");
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Select soil = new Select(driver.findElement(By.xpath("//select[@class='border-2 border-green-600 p-2 rounded-sm w-64']")));
         soil.selectByVisibleText("Loamy");
 
-        Select crop = new Select(driver.findElement(By.xpath("//label[text()='Select a Crop Type:']/following-sibling::select")));
-        crop.selectByVisibleText("Wheat");
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Select fret = new Select(driver.findElement(By.xpath("//label[text()='Select a Crop Type:']/following-sibling::select")));
+        fret.selectByVisibleText("Wheat");
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         driver.findElement(By.xpath("//input[@placeholder='Enter moisture value']")).sendKeys("50");
         driver.findElement(By.xpath("//input[@placeholder='Enter nitrogen value']")).sendKeys("41");
@@ -75,13 +142,28 @@ public class firstseleniumTest {
 
         driver.findElement(By.xpath("//button[text()='Get Fertilizer Recommendation']")).click();
 
-        String predcrop = driver.findElement(By.xpath("//strong[@class='border m-2 p-2']")).getText();
-        String expectcrop = "యూరియా";
-        Assert.assertEquals(predcrop,expectcrop);
+
+
+        WebElement new1 = driver.findElement(By.xpath("//strong[@class='border m-2 p-2']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new1);
+
+
+
+        String predfret = driver.findElement(By.xpath("//strong[@class='border m-2 p-2']")).getText();
+        String expectfret = "యూరియా";
+        Assert.assertEquals(predfret,expectfret);
+
+
+        try {
+            Thread.sleep(2300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 //        Weather Alerts
 
         driver.findElement(By.xpath("//li[text()='Weather Alerts']")).click();
+
         driver.findElement(By.xpath("//label[text()='Monday']")).click();
         driver.findElement(By.xpath("//label[text()='Tuesday']")).click();
         driver.findElement(By.xpath("//label[text()='Wednesday']")).click();
@@ -90,9 +172,20 @@ public class firstseleniumTest {
         driver.findElement(By.xpath("//label[text()='Saturday']")).click();
         driver.findElement(By.xpath("//label[text()='Sunday']")).click();
 
+        try {
+            Thread.sleep(2300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
 
         driver.findElement(By.xpath("//li[text()='Disease Prediction']")).click();
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Select lang = new Select(driver.findElement(By.id("language-selector")));
         lang.selectByVisibleText("telugu");
 
@@ -104,19 +197,53 @@ public class firstseleniumTest {
 
         driver.findElement(By.xpath("//button[text()='Predict Disease']")).click();
 
+
+
+        try {
+            Thread.sleep(2400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         String dpre = driver.findElement(By.xpath("//p[@class='text-green-700 text-lg']")).getText();
         String dact =  "ద్రాక్ష___ఎస్కా_(నలుపు_మీజిల్స్)";
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement new3 = driver.findElement(By.xpath("//p[@class='text-green-700 text-lg']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new3);
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Assert.assertEquals(dpre,dact);
 
 
 
         driver.findElement(By.xpath("//li[text()='Ecommerce Store']")).click();
 
+        try {
+            Thread.sleep(2600);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Select price = new Select(driver.findElement(By.cssSelector(".filter-dropdown:nth-of-type(1)")));
         price.selectByVisibleText("$1376 - $1939");
 
         Select cat = new Select(driver.findElement(By.cssSelector(".filter-dropdown:nth-of-type(2)")));
         cat.selectByVisibleText("Seed");
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         String typeofcat = driver.findElement(By.xpath("//span[text()='Seed']")).getText();
         String actcat = "Seed";
@@ -132,6 +259,12 @@ public class firstseleniumTest {
         String Pname = driver.findElement(By.xpath("//h3[text()='Quinoa']")).getText();
         driver.findElement(By.xpath("//h3[text()='Quinoa']")).click();
 
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         String expecname = driver.findElement(By.xpath("//h1[text()='Quinoa']")).getText();
         Assert.assertEquals(Pname, expecname);
 
@@ -146,15 +279,30 @@ public class firstseleniumTest {
         ratin.selectByValue("4");
 
         driver.findElement(By.xpath("//button[text()='Submit Review']")).click();
+        try {
+            Thread.sleep(2400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         String reviewtext = "Good Product Love it";
-       String expre = driver.findElement(By.xpath("//p[text()='Good Product Love it']")).getText();
+        String expre = driver.findElement(By.xpath("//p[text()='Good Product Love it']")).getText();
         Assert.assertEquals(expre,reviewtext);
 
         driver.findElement(By.xpath("//button[text()='Add to Cart']")).click();
+        try {
+            Thread.sleep(1900);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         driver.findElement(By.xpath("//li[text()='Ecommerce Store']")).click();
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -170,6 +318,11 @@ public class firstseleniumTest {
 
 
         driver.findElement(By.xpath("//li[span[@class='cart-count']]")).click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         driver.findElement(By.xpath("//input[@type='number']")).sendKeys(Keys.chord(Keys.CONTROL,"1"),"2");
         driver.findElement(By.xpath("//button[text()='Remove']")).click();
@@ -181,61 +334,6 @@ public class firstseleniumTest {
         }
 
         driver.findElement(By.xpath("//button[text()='Remove']")).click();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
