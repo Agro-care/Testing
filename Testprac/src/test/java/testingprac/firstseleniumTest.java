@@ -1,9 +1,7 @@
 package testingprac;
 
-import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -11,7 +9,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.nio.channels.AsynchronousServerSocketChannel;
 import java.time.Duration;
 
 public class firstseleniumTest {
@@ -286,7 +283,7 @@ public class firstseleniumTest {
         }
 
         String reviewtext = "Good Product Love it";
-        String expre = driver.findElement(By.xpath("//p[text()='Good Product Love it']")).getText();
+       String expre = driver.findElement(By.xpath("//p[text()='Good Product Love it']")).getText();
         Assert.assertEquals(expre,reviewtext);
 
         driver.findElement(By.xpath("//button[text()='Add to Cart']")).click();
@@ -336,7 +333,103 @@ public class firstseleniumTest {
         driver.findElement(By.xpath("//button[text()='Remove']")).click();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
     // Wait for successful login and dashboard load
 
+    public static class loginpaget1 {
+        WebDriver driver;
+
+        @BeforeClass
+        public void setUp() {
+            // Initialize WebDriver and open the website
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.get("https://agro-assist-frontend.vercel.app/");
+            driver.findElement(By.xpath("//li[text()='Logout']")).click();
+
+        }
+
+        @AfterClass
+        public void tearDown() {
+            driver.findElement(By.xpath("//li[text()='Logout']")).click();
+            driver.quit();
+        }
+
+        @Test
+        public void loginpage1() {
+
+            //working fine
+
+            driver.findElement(By.xpath("//input[@name='email']")).sendKeys("premsai.potukuchi@gmail.com");
+            driver.findElement(By.id("loggingPassword")).sendKeys("12345");
+            driver.findElement(By.xpath("//button[@type='submit']")).click();
+            try {
+                Thread.sleep(2300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+
+
+
+        }
+        // Wait for successful login and dashboard load
+
+    }
 }
