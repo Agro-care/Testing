@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class dispt2 {
+public class croprecomt1 {
     WebDriver driver;
 
     @BeforeClass
@@ -26,8 +26,8 @@ public class dispt2 {
 
     @AfterClass
     public void tearDown() {
-        driver.findElement(By.xpath("//li[text()='Logout']")).click();
-        driver.quit();
+//        driver.findElement(By.xpath("//li[text()='Logout']")).click();
+//        driver.quit();
     }
 
     @Test
@@ -44,48 +44,53 @@ public class dispt2 {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-        driver.findElement(By.xpath("//li[text()='Disease Prediction']")).click();
+        driver.findElement(By.xpath("//li[text()='Crop Recommendation']")).click();
+
+        Select obj = new Select(driver.findElement(By.id("language-selector")));
         try {
-            Thread.sleep(2500);
+            Thread.sleep(1800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Select lang = new Select(driver.findElement(By.id("language-selector")));
-        lang.selectByVisibleText("tamil");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='image/*']"));
-        fileInput.sendKeys("C:/Users/prems/Downloads/leaf1.jpg");
-
-        driver.findElement(By.xpath("//button[text()='Predict Disease']")).click();
-
-
+        obj.selectByVisibleText("arabic");
 
         try {
-            Thread.sleep(2400);
+            Thread.sleep(1800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        String dpre = driver.findElement(By.xpath("//p[@class='text-green-700 text-lg']")).getText();
-        String dact =  "தக்காளி___ஏர்லி_பிளைட்";
+        driver.findElement(By.xpath("//input[@placeholder='Enter the Temperature']")).sendKeys("20");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Humidity']")).sendKeys("83");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Nitrogen']")).sendKeys("90");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Phosphorus']")).sendKeys("42");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the value of Potassium']")).sendKeys("43");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the soil pH value (0-14)']")).sendKeys("6.5");
+        driver.findElement(By.xpath("//input[@placeholder='Enter the rainfall gauge (in mm)']")).sendKeys("202");
+
+        driver.findElement(By.xpath("//button[text()='Get Crop Recommendation']")).click();
+        try {
+            Thread.sleep(1800);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String crop = driver.findElement(By.xpath("//*[normalize-space(text())='أرز']")).getText();
+
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebElement new3 = driver.findElement(By.xpath("//p[@class='text-green-700 text-lg']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new3);
+        WebElement new2 = driver.findElement(By.xpath("//*[normalize-space(text())='أرز']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", new2);
+
         try {
-            Thread.sleep(2500);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        Assert.assertEquals(dpre,dact);
 
     }
     // Wait for successful login and dashboard load

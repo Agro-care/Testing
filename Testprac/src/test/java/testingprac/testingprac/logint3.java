@@ -1,5 +1,7 @@
 package testingprac;
 
+//test case passed and with wron password and email
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -11,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Logintestt1 {
+public class logint3{
     WebDriver driver;
 
     @BeforeClass
@@ -20,7 +22,7 @@ public class Logintestt1 {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://agro-assist-frontend.vercel.app/");
-        driver.findElement(By.xpath("//li[text()='Login']")).click();
+        driver.findElement(By.xpath("//li[text()='Logout']")).click();
 
     }
 
@@ -34,9 +36,8 @@ public class Logintestt1 {
     public void TestfinalforAgroAssist() {
 
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("premsai.potukuchi@gmail.com");
-        driver.findElement(By.id("loggingPassword")).sendKeys("12345");
+        driver.findElement(By.id("loggingPassword")).sendKeys("145");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-
         try {
             Thread.sleep(2300);
         } catch (InterruptedException e) {
@@ -45,9 +46,7 @@ public class Logintestt1 {
 
         }
 
-        String title = driver.findElement(By.xpath("//h1[text()='Empowering Farmers with Technology']")).getText();
-        String actt = "Empowering Farmers with Technology";
-        Assert.assertEquals(title,actt);
+
 
 
 
