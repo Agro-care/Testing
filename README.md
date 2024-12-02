@@ -92,5 +92,5 @@ To contribute to the testing repository:
 # Contact
 For queries or issues, contact the testing team:
 - **Tester**: Venkata Manikanta Prem Sai Potukuchi
-- **Email**: [Insert Contact Email]
+- **Email**: premsai.potukuchi@gmail.com
 
