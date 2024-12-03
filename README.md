@@ -83,7 +83,12 @@ To contribute to the testing repository:
 2. Add or modify test scripts in the `TestCases` folder.
    2.1 how to run the file go to the test files in the folder: [Testprac\src\test\java\testingprac](https://github.com/Agro-care/Testing/tree/main/Testprac/src/test/java/testingprac)
    2.2 now open a test file of you wish
-   2.3 now click run on public class for example![image](https://github.com/user-attachments/assets/edee435d-49ed-4769-b305-b60eb52bb483) (click run on public class beside button because we dont have a main method for the test case we need to run through the page.
+   2.3 now click run on public class for example![image](https://github.com/user-attachments/assets/edee435d-49ed-4769-b305-b60eb52bb483)
+
+   
+   (click run on public class beside button because we dont have a main method for the test case we need to run through the page.
+
+   
    ![image](https://github.com/user-attachments/assets/260fa29d-4c93-413c-b8ca-b7d3038f8906)
 
 
