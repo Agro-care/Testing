@@ -49,11 +49,6 @@ Testing/
 │   ├── EquipmentRentalTests.java
 │   ├── AdminDashboardTests.java
 │   └── DiseasePredictionTests.java
-├── TestData/
-│   └── InputData.xlsx
-├── TestReports/
-│   ├── TestExecutionReport.html
-│   └── Screenshots/
 └── README.md
 ```
 
